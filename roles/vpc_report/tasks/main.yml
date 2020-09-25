@@ -3,6 +3,9 @@
   amazon.aws.ec2_vpc_net_info:
     region: "{{ ec2_region }}"
   register: all_the_info
+  connection: local
+  delegate_to: localhost
+  run_once: true
 
 - name: how many vpc?
   debug:
@@ -38,7 +41,7 @@
 - name: create HTML report
   become: yes
   template:
-    src: report.j2
+    src: template.j2
     dest: "{{ file_path }}/index.html"
 
 - name: copy CSS over
@@ -48,10 +51,17 @@
     dest: "{{ file_path }}"
     directory_mode: true
 
-- name: copy CSS over
+- name: copy image over
   become: yes
   copy:
     src: "webpage_logo.png"
+    dest: "{{ file_path }}"
+    directory_mode: true
+
+- name: copy image over
+  become: yes
+  copy:
+    src: "ocp_logo.png"
     dest: "{{ file_path }}"
     directory_mode: true
 
