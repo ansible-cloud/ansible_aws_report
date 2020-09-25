@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$("document").ready(function(){
+  $click =  $('.expandclass');   // Click selector
+
+
+  $click.click(function () {
+
+    $clicked = $(this);
+    $expand = $(this).parent('.expand').next();  // Expand and collapse content selector
+
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $expand.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of expand based on visibility of content div
+        });
+
+    });
+});
+</script>
+</head>
+<body>
+<center>
+<h1>Ansible AWS VPC Report</h1>
+<p>This report was kicked off by Knative on Openshift Compute Platform and processed on Ansible Automation Platform.</p>
+<p>This automation event took place @ {{ lookup('pipe','date') }}</p>
+</center>
+
+<table>
+    <thead>
+        <tr>
+            <th>VPCs</th>
+            <th>Region</th>
+        </tr>
+    </thead>
+        <tr>
+            <td> {{ all_the_info.vpcs|length }} </td>
+            <td> {{ ec2_region }} </td>
+        </tr>
+</table>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Owner</th>
+            <th>cidr_block</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for single_vpc in all_the_info.vpcs|sort %}
+        <tr>
+            <td><p class="hostname">{{ single_vpc.tags.Name }}</p>
+            <td>{{ single_vpc.vpc_id }}</td>
+            <td>{{ single_vpc.tags.Username | default("Not configured") }}</td>
+            <td>{{ single_vpc.cidr_block }}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+<center><p>Created with</p><br><img src="webpage_logo.png" width="300"><br>
+<p>and</p><br>
+<img src="ocp_logo.png" width="300"><br>
+
+<p>The source code to create this report can be found at <a href="https://github.com/IPvSean/ansible_aws_report">https://github.com/IPvSean/ansible_aws_report</a></br><br>
+If you are new to Ansible Automation Platform check out the following links:<br>
+<a href="https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html">Getting Started</a"><br>
+<a href="https://ansible.com/workshops">Free hands-on workshops</a><br>
+<a href="https://youtube.com/ansibleautomation">Youtube Videos</a><br>
+</p>
+</center>
+
+</body>
+</html>

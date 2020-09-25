@@ -1,0 +1,10 @@
+- name: Ansible AWS report playbook
+  hosts: all
+  become: false
+  gather_facts: false
+  vars:
+    ec2_region: us-east-1
+  tasks:
+    - name: get some info
+      include_role:
+        name: vpc_report
