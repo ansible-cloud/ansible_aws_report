@@ -57,9 +57,9 @@ $("document").ready(function(){
     <tbody>
 {% for single_vpc in all_the_info.vpcs|sort %}
         <tr>
-            <td><p class="hostname">{{ single_vpc.tags.Name }}</p>
+            <td><p class="hostname">{{ single_vpc.tags.Name | default("<p style='color:red'>Not configured</p>") }}</p>
             <td>{{ single_vpc.vpc_id }}</td>
-            <td>{{ single_vpc.tags.Username | default("Not configured") }}</td>
+            <td>{{ single_vpc.tags.Username | default("<p style='color:red'>Not configured</p>") }}</td>
             <td>{{ single_vpc.cidr_block }}</td>
         </tr>
 {% endfor %}
