@@ -55,7 +55,7 @@ $("document").ready(function(){
         </tr>
     </thead>
     <tbody>
-{% for single_vpc in all_the_info.vpcs|sort %}
+{% for single_vpc in all_the_info.vpcs %}
         <tr>
             <td><p class="hostname">{{ single_vpc.tags.Name | default("<p style='color:red'>Not configured</p>") }}</p>
             <td>{{ single_vpc.vpc_id }}</td>
