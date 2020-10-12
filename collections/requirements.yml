@@ -1,3 +1,9 @@
 collections:
   - name: amazon.aws
     source: https://galaxy.ansible.com
+
+  - name: junipernetworks.junos
+    source: https://galaxy.ansible.com
+
+  - name: f5networks.f5_modules
+    source: https://galaxy.ansible.com

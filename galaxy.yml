@@ -1,0 +1,33 @@
+---
+namespace: ipvsean
+name: ansible_aws_report
+version: 1.0.2
+readme: README.md
+
+authors:
+  - Sean Cavanaugh <seanc@redhat.com> @IPvSean
+
+description: example of Ansible role utilizing Amazon AWS modules to retrieve information and create simple HTML dynamic website
+
+license:
+  - GPL-3.0-or-later
+
+tags:
+  - apache
+  - centos
+  - rhel
+  - el
+  - amazon
+  - linux
+  - fedora
+  - infrastructure
+  - tower
+  - awx
+
+dependencies:
+  "amazon.aws": "*"
+
+repository: http://github.com/ipvsean/ansible_aws_report
+documentation: http://github.com/ipvsean/ansible_aws_report
+homepage: http://github.com/ipvsean/ansible_aws_report
+issues: https://github.com/ipvsean/ansible_aws_report/issues
