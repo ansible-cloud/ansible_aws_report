@@ -35,6 +35,6 @@ This Ansible Collection was demoed at Ansiblefest 2020 in conjunction with marki
 
 ## OCP + Ansible
 
-![ocp logo](roles/vpc_report/files/ocp_logo.png)
+![ocp logo](images/rhocp.png)
 +
-![ocp logo](roles/vpc_report/files/webpage_logo.png)
+![rhapp logo](images/rhaap.png)
